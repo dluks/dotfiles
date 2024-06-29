@@ -62,7 +62,7 @@ if [ -d "$ohmyzsh_dir" ]; then
   rm -rf "$ohmyzsh_dir"
 fi
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+RUNZSH=no zsh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 
 # Install Zsh Autosuggestions
@@ -94,7 +94,7 @@ fi
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 # Install Meslo Nerd Fonts
-curl -OL https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Meslo.zip -o /tmp/Meslo.zip
+curl -o /tmp/Meslo.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Meslo.zip
 # Check if .local/share/fonts exists
 if [ ! -d "$HOME/.local/share/fonts" ]; then
   mkdir -p "$HOME/.local/share/fonts"
@@ -105,4 +105,30 @@ fc-cache -f -v
 # Install powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc
+
+# Remove existing .zshrc
+if [ -f "$HOME/.zshrc" ]; then
+	  if $create_backup; then
+		      echo "Found existing .zshrc. Creating backup and overwriting..."
+		          mv "$HOME/.zshrc" "$HOME/.zshrc.bak"
+			    else
+				        echo "Found existing .zshrc. Removing without backup..."
+					  fi
+					    rm -f "$HOME/.zshrc"
+fi
+# Remove existing .tmux.conf
+if [ -f "$HOME/.tmux.conf" ]; then
+	  if $create_backup; then
+		      echo "Found existing .tmux.conf. Creating backup and overwriting..."
+		          mv "$HOME/.tmux.conf" "$HOME/.tmux.conf.bak"
+			    else
+				        echo "Found existing .tmux.conf. Removing without backup..."
+					  fi
+					    rm -f "$HOME/.tmux.conf"
+fi
+
+# Stow dotfiles
+stow .
+
+# Source stowed .zshrc
 source ~/.zshrc
