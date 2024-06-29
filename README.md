@@ -1,7 +1,7 @@
 # Dotfiles
 
 ## Install
-1. Install `tmux`, `neovim`, and `stow` if they're not already installed.
+1. Install `fzf`, `tmux`, `neovim`, and `stow` if they're not already installed.
 
 1. Clone the repository and navigate to it
     ```console
@@ -13,9 +13,9 @@
     ```console
     bash setup.sh
     ```
-1. Run `stow`
+1. Source the new stowed `.zshrc` file
     ```console
-    stow .
+    cd ~
+    source .zshrc
     ```
-1. Fix any merge conflicts (this will certainly happen with `.zshrc`, potentially with others). Use `git status` to see the changes and revert as desired.
 
