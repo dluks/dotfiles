@@ -107,14 +107,11 @@ sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/
 
 # Remove existing .zshrc
 if [ -f "$HOME/.zshrc" ]; then
-	if $create_backup; then
-		echo "Found existing .zshrc. Creating backup and overwriting..."
-		mv "$HOME/.zshrc" "$HOME/.zshrc.bak"
-	else
-		echo "Found existing .zshrc. Removing without backup..."
-	fi
-	rm -f "$HOME/.zshrc"
+
+	echo "Found existing .zshrc. Creating backup and overwriting..."
+	mv "$HOME/.zshrc" "$HOME/.zshrc.bak"
 fi
+
 # Remove existing .tmux.conf
 if [ -f "$HOME/.tmux.conf" ]; then
 	if $create_backup; then
