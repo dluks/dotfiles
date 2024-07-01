@@ -111,30 +111,6 @@ source $ZSH/oh-my-zsh.sh
 # cmem = clear PageCache, Dentries, and Inodes
 alias clearcaches='sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"'
 
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/daniel/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/daniel/miniforge3/etc/profile.d/conda.sh" ]; then
-        . "/home/daniel/miniforge3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/daniel/miniforge3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-
-if [ -f "/home/daniel/miniforge3/etc/profile.d/mamba.sh" ]; then
-    . "/home/daniel/miniforge3/etc/profile.d/mamba.sh"
-fi
-# <<< conda initialize <<<
-
-
-# Created by `pipx` on 2024-04-24 10:02:59
-export PATH="$PATH:/home/daniel/.local/bin"
-
 # Use gpg-agent
 export GPG_TTY=$(tty)
 
@@ -159,3 +135,8 @@ alias nv="nvim"
 alias tn="tmux new -s"
 alias ta="tmux attach -t"
 alias tm="tmux"
+
+# Source .zshrc_local if it exists
+if [ -f "$HOME/.zshrc_local" ]; then
+    source "$HOME/.zshrc_local"
+fi
