@@ -13,9 +13,4 @@
     ```console
     bash setup.sh
     ```
-1. Source the new stowed `.zshrc` file
-    ```console
-    cd ~
-    source .zshrc
-    ```
 
