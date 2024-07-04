@@ -11,6 +11,9 @@
     ```
 1. Run `setup.sh` to install all Tmux Plugin Manager, LazyVIM, Oh My Zsh, as well as a few fonts, plugins, and the `powerlevel10k` theme.
     ```console
-    bash setup.sh
+    zsh setup.sh
     ```
-
+1. Source the new `.zshrc` file.
+    ```console
+    source $HOME/.zshrc
+    ```
