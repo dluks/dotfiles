@@ -132,8 +132,8 @@ export PATH="$PATH:/opt/nvim-linux64/bin"
 alias nv="nvim"
 
 # Add tmux new and attach aliases
-alias tn="tmux new -s"
-alias ta="tmux attach -t"
+alias tmn="tmux new -s"
+alias tma="tmux attach -t"
 alias tml="tmux list-sessions"
 alias tm="tmux"
 
