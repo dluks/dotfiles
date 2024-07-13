@@ -112,7 +112,7 @@ source $ZSH/oh-my-zsh.sh
 alias clearcaches='sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"'
 
 # Use gpg-agent
-export GPG_TTY=$(tty)
+export GPG_TTY=$TTY
 
 # Cache GPG password
 alias gpgcache="echo 'test' | gpg --clearsign"
@@ -141,3 +141,4 @@ alias tm="tmux"
 if [ -f "$HOME/.zshrc_local" ]; then
     source "$HOME/.zshrc_local"
 fi
+
